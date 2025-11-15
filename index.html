@@ -60,6 +60,25 @@
       .scrolling-wrapper {
         animation: scroll 40s linear infinite;
       }
+
+      /* Instagram Embed Styles */
+      .instagram-media {
+        background: #FFF !important;
+        border: 0 !important;
+        border-radius: 12px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        min-width: 280px !important;
+        width: 100% !important;
+        overflow: hidden !important;
+      }
+
+      .instagram-media iframe {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 12px !important;
+      }
     </style>
 <script type="importmap">
 {
@@ -74,7 +93,5 @@
 <body class="bg-gray-50 text-gray-600">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
-    <!-- Instagram Embed Script -->
-    <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
