@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Footer from './components/Footer';
 import DonationModal from './components/DonationModal';
 import InfoModal from './components/InfoModal';
 import { HeroSection } from './components/sections/HeroSection';
 import { AboutSection } from './components/sections/AboutSection';
 import { ImpactSection } from './components/sections/ImpactSection';
-import { SpiritualSection } from './components/sections/SpiritualSection';
 import { HowToHelpSection } from './components/sections/HowToHelpSection';
 import { SupportersSection } from './components/sections/SupportersSection';
 import { DonateIcon } from './components/icons/DonateIcon';
@@ -13,23 +12,10 @@ import { DonateIcon } from './components/icons/DonateIcon';
 export default function App() {
     const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
     const [infoModalContent, setInfoModalContent] = useState<{ title: string; content: React.ReactNode } | null>(null);
-    const [showFab, setShowFab] = useState(false);
 
     const openDonationModal = () => setIsDonationModalOpen(true);
     const closeDonationModal = () => setIsDonationModalOpen(false);
     const closeInfoModal = () => setInfoModalContent(null);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > window.innerHeight * 0.9) {
-                setShowFab(true);
-            } else {
-                setShowFab(false);
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     // Content for InfoModal
     const aboutContent = (
@@ -88,7 +74,6 @@ export default function App() {
                 <HeroSection onDonateClick={openDonationModal} />
                 <AboutSection />
                 <ImpactSection />
-                <SpiritualSection />
                 <HowToHelpSection onDonateClick={openDonationModal} />
                 <SupportersSection />
             </main>
@@ -107,12 +92,13 @@ export default function App() {
                 {infoModalContent?.content}
             </InfoModal>
 
-            {/* Floating Action Button for Mobile */}
-            <div className={`fixed bottom-6 right-6 z-40 md:hidden transition-all duration-500 ${showFab ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            {/* Floating Action Button - Always Visible */}
+            <div className="fixed bottom-6 right-6 z-50 transition-all duration-300">
                 <button
                     onClick={openDonationModal}
-                    className="bg-[#FF6A1A] text-white p-4 rounded-full shadow-lg hover:bg-[#E05A10] focus:outline-none focus:ring-4 focus:ring-orange-300 transition-transform duration-300 transform hover:scale-110"
+                    className="bg-[#FF6A1A] text-white p-4 rounded-full shadow-2xl hover:bg-[#E05A10] focus:outline-none focus:ring-4 focus:ring-orange-300 transition-all duration-300 transform hover:scale-110 active:scale-95"
                     aria-label="Doar com PIX"
+                    title="Doar com PIX"
                 >
                     <DonateIcon className="w-8 h-8" />
                 </button>
