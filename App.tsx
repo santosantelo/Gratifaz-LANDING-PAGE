@@ -93,14 +93,15 @@ export default function App() {
             </InfoModal>
 
             {/* Floating Action Button - Always Visible */}
-            <div className="fixed bottom-6 right-6 z-50 transition-all duration-300">
+            <div className="fixed bottom-6 right-6 z-50 transition-all duration-300 ease-out">
                 <button
                     onClick={openDonationModal}
-                    className="bg-[#FF6A1A] text-white p-4 rounded-full shadow-2xl hover:bg-[#E05A10] focus:outline-none focus:ring-4 focus:ring-orange-300 transition-all duration-300 transform hover:scale-110 active:scale-95"
+                    className="bg-[#FF6A1A] text-white p-4 rounded-full shadow-2xl hover:bg-[#E05A10] focus:outline-none focus:ring-4 focus:ring-orange-300 transition-all duration-300 ease-out transform hover:scale-110 active:scale-95 will-change-transform"
                     aria-label="Doar com PIX"
                     title="Doar com PIX"
+                    style={{ backfaceVisibility: 'hidden' }}
                 >
-                    <DonateIcon className="w-8 h-8" />
+                    <DonateIcon className="w-8 h-8 transition-transform duration-300 ease-out group-hover:rotate-12" />
                 </button>
             </div>
         </div>

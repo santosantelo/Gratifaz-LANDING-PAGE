@@ -3,16 +3,32 @@ import Animated from '../Animated';
 
 const ImpactCard = ({ beforeImg, afterImg, title, description }: { beforeImg?: string; afterImg: string; title: string; description: string; }) => (
     <div 
-        className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2 group"
+        className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 ease-out transform hover:-translate-y-2 hover:shadow-2xl group will-change-transform"
+        style={{ backfaceVisibility: 'hidden' }}
     >
-        <div className="relative w-full h-40">
+        <div className="relative w-full h-40 overflow-hidden">
             {beforeImg ? (
                 <>
-                    <img src={beforeImg} alt="Antes" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0" />
-                    <img src={afterImg} alt="Depois" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
+                    <img 
+                        src={beforeImg} 
+                        alt="Antes" 
+                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out opacity-100 group-hover:opacity-0" 
+                        style={{ willChange: 'opacity' }}
+                    />
+                    <img 
+                        src={afterImg} 
+                        alt="Depois" 
+                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out opacity-0 group-hover:opacity-100" 
+                        style={{ willChange: 'opacity' }}
+                    />
                 </>
             ) : (
-                <img src={afterImg} alt={title} className="w-full h-full object-cover" />
+                <img 
+                    src={afterImg} 
+                    alt={title} 
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" 
+                    style={{ willChange: 'transform' }}
+                />
             )}
         </div>
         <div className="p-6">
@@ -36,7 +52,12 @@ export const ImpactSection: React.FC = () => {
                     </Animated>
                 </div>
                  <div className="mt-12">
-                    <a href="https://www.instagram.com/projetogratifaz/?hl=en" target="_blank" rel="noopener noreferrer" className="bg-[#7B3BFF] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#6A28E6] transition-all duration-300 transform hover:scale-105 text-lg">
+                    <a 
+                        href="https://www.instagram.com/projetogratifaz/?hl=en" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="bg-[#7B3BFF] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#6A28E6] transition-all duration-300 ease-out transform hover:scale-105 active:scale-95 text-lg will-change-transform"
+                    >
                         Apoiar Projetos
                     </a>
                 </div>

@@ -10,13 +10,19 @@ interface HowToHelpProps {
 }
 
 const HelpCard = ({ icon, title, description, buttonText, action, isPrimary = false }: { icon: React.ReactNode; title: string; description: string; buttonText: string; action: () => void; isPrimary?: boolean }) => (
-    <div className="bg-white p-8 rounded-2xl shadow-lg text-center flex flex-col items-center transition-transform transform hover:-translate-y-2 h-full">
-        <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${isPrimary ? 'bg-[#FF6A1A]' : 'bg-[#7B3BFF]'}`}>
+    <div 
+        className="bg-white p-8 rounded-2xl shadow-lg text-center flex flex-col items-center transition-all duration-300 ease-out transform hover:-translate-y-2 hover:shadow-2xl h-full will-change-transform"
+        style={{ backfaceVisibility: 'hidden' }}
+    >
+        <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-transform duration-300 ease-out hover:scale-110 ${isPrimary ? 'bg-[#FF6A1A]' : 'bg-[#7B3BFF]'}`}>
             {icon}
         </div>
         <h3 className="text-xl font-bold text-gray-700 mb-2">{title}</h3>
         <p className="text-gray-600 mb-6 flex-grow">{description}</p>
-        <button onClick={action} className={`w-full font-bold py-3 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105 ${isPrimary ? 'bg-[#FF6A1A] text-white hover:bg-[#E05A10]' : 'bg-[#7B3BFF] text-white hover:bg-[#6A28E6]'}`}>
+        <button 
+            onClick={action} 
+            className={`w-full font-bold py-3 px-6 rounded-full shadow-md transition-all duration-300 ease-out transform hover:scale-105 active:scale-95 will-change-transform ${isPrimary ? 'bg-[#FF6A1A] text-white hover:bg-[#E05A10]' : 'bg-[#7B3BFF] text-white hover:bg-[#6A28E6]'}`}
+        >
             {buttonText}
         </button>
     </div>

@@ -17,9 +17,41 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <style>
-      /* Smooth scroll behavior */
+      /* Smooth scroll behavior melhorado */
       html {
         scroll-behavior: smooth;
+        scroll-padding-top: 80px; /* Espaço para header fixo se houver */
+      }
+
+      /* Melhorias de performance para scroll */
+      * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Otimização de renderização durante scroll */
+      body {
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      /* Melhorar performance de animações */
+      @media (prefers-reduced-motion: no-preference) {
+        * {
+          scroll-behavior: smooth;
+        }
+      }
+
+      /* Respeitar preferência de movimento reduzido */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
       }
 
       .animated-gradient-border {
@@ -59,6 +91,20 @@
 
       .scrolling-wrapper {
         animation: scroll 40s linear infinite;
+        will-change: transform;
+      }
+
+      /* Melhorar performance de hover e transições */
+      button, a {
+        transform: translateZ(0); /* Force GPU acceleration */
+        backface-visibility: hidden;
+      }
+
+      /* Scroll suave customizado para navegadores que suportam */
+      @supports (scroll-behavior: smooth) {
+        html {
+          scroll-behavior: smooth;
+        }
       }
 
       /* Instagram Embed Styles */
